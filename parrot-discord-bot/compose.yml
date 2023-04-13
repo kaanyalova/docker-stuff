@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    parrot:
+        build: https://github.com/aquelemiguel/parrot.git
+        env_file:
+             - .env
+        restart: unless-stopped
+            
