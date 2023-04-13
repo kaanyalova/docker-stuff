@@ -1,19 +1,25 @@
-version: "3.8"
+version: "3"
 
 services:
-  mc:
-    image: itzg/minecraft-server
-    ports:
-      - "25565:25565"
-    environment:
-      EULA: "true"
-      TYPE: AUTO_CURSEFORGE
-      CF_API_KEY: ${CF_KEY} # allocate from https://console.curseforge.com/
-      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/nomi-ceu
-      CF_FILENAME_MATCHER: "1.6"
-      MEMORY: 4G
-    volumes:
-      - mc-data:/data
+    nomi:
+        image: itzg/minecraft-server:java8-multiarch
+        volumes:
+            - ./mc-data:/data
+        env_file:
+            - .env
+        environment:
+            EULA: "true"
+            TYPE: AUTO_CURSEFORGE
+            CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/nomi-ceu
+            CF_FILENAME_MATCHER: "1.6"
+            MEMORY: 6G
+            ENABLE_WHITELIST: "true"
+            OVERRIDE_WHITELIST: "true"
+            ENFORCE_WHITELIST: "true"
+            ONLINE_MODE: "false"
+            ALLOW_FLIGHT: "true"
+
 
 volumes:
-  mc-data: {}
+    mc-data: {}
+    
