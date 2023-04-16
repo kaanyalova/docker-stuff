@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  calibre-web:
+    #image: lscr.io/linuxserver/calibre-web:latest
+    build:
+        context: https://github.com/kaanyalova/docker-calibre-web.git
+        dockerfile: Dockerfile.aarch64
+    container_name: calibre-web
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Istanbul
+      #- DOCKER_MODS=linuxserver/mods:universal-calibre #optional
+      #- OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
+    volumes:
+      - /home/ubuntu/calibre-data:/config
+      - /home/ubuntu/books:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+#    tty: true
