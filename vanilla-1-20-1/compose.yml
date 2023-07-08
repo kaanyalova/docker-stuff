@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+    van:
+        image: itzg/minecraft-server
+        volumes:
+            - ./mc-data:/data
+#        env_file:
+#            - .env
+        environment:
+            EULA: "true"
+            MEMORY: 4G
+            ENABLE_WHITELIST: "true"
+            OVERRIDE_WHITELIST: "true"
+            ENFORCE_WHITELIST: "true"
+            ONLINE_MODE: "false"
+            ALLOW_FLIGHT: "true"
+            TYPE: PAPER
+        ports:
+            - "25565:25565" 
+        
+volumes:
+    mc-data: {}
+    
