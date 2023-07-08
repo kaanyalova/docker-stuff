@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    nomi:
+        image: itzg/minecraft-server:java8-multiarch
+        volumes:
+            - ./mc-data:/data
+        env_file:
+            - .env
+        environment:
+            EULA: "true"
+            TYPE: AUTO_CURSEFORGE
+            CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/all-the-mods-6
+            CF_FILENAME_MATCHER: "AllTheMods 6-1.8.28"
+            MEMORY: 8G
+            ENABLE_WHITELIST: "true"
+            OVERRIDE_WHITELIST: "true"
+            ENFORCE_WHITELIST: "true"
+            ONLINE_MODE: "false"
+            ALLOW_FLIGHT: "true"
+
+
+volumes:
+    mc-data: {}
+    
